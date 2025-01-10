@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>선택자 01</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <div>
+    <h1 class = "title">제목</h1>
+    <p class = "title">저자</p>
+  </div>
+  <script>
+    // 제이쿼리는 :jQuery() 함수를 사용
+    let tegResult = jQuery('.title'); //$();
+    tegResult.text(123);
+    //인덱스를 활용 =>jQuery 객체를 벗어남으로 일반 태그로 인식
+    tegResult[1].textContent = '저자';
+  </script>
+  <hr>
+  <div>
+    <h1 class="blue">제이쿼리</h1c>
+    <h2 id="title">선택자</h2>
+    <h3 class="blue">직접 선택자</h3>
+    <h4>그룹 선택자</h4>
+  </div>
+  <script>
+    //직접 선택자 : 특정 속성을 기준으로 검색
+
+    //전채 선택자: *
+    jQuery('*').css('border','1px solid blue');
+
+    //아이디 선택자 : #id
+    jQuery('#title').css('background-color','gray');
+
+    //클래스 선택자 :.class
+    let classTag = jQuery('.blue');
+    classTag.text('동일한 내용 적용');
+
+    for (let i = 0; i < classTag.length; i++) {
+      classTag[i].textContent = i;
+    }
+
+    //태그 선택자 : 태그이름
+    $('h3').text('직접선택지로 다시 변경');
+
+    //그룹 선택자 : , ,
+    $('h4, div #title').css("color",'green');
+
+    //종속 선택자 : 특정 속성값을 가진 태그
+    $('h1.blue').text('종속 선택자로 선택')
+  </script>
+</body>
+</html>

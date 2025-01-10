@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>선택자 03</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>탐색 선택자</h1>
+    <ul id="menu">
+      <li>내용1</li>
+      <li>내용2</li>
+      <li>내용3</li>
+      <li>내용4</li>
+      <li>내용5</li>
+    </ul>
+  </div>
+  <script>
+    // first, last
+    $('#menu li').first().text('첫번째 변경');
+    $('#menu li:first').css('color', 'red');
+    $('#menu li').last().text('마지막 변경');
+
+    // even : 홀수번쨰 요소 -> 인덱스는 짝수
+    // odd : 짝수번쨰 요소 -> 인덱스는 홀수
+    $('#menu li:odd').text('짝수 요소');
+
+    // eq : 이퀄스 지정한 인덱스 요소
+    $('#menu li').eq(3).text('내용을 수정합니다eqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeq');
+    $('#menu li:eq(3)').css('color', 'orange');
+
+    // lt : 리스 덴 지정한 인덱스 보다 작은 요소
+    $('#menu li:lt(2)').text('lt로 검색');
+    // gt : 그뤠이트 덴 지정한 인덱스 보다 큰 요소
+    $('#menu li:gt(3)').text('gt로 검색');
+  </script>
+  <hr>
+  <div>
+    <h1>탐색선택자 2</h1>
+    <ol>
+      <p>p태그</p>
+      <li>내용1-1</li>
+      <li>내용1-2</li>
+      <li>내용1-3</li>
+      <li>내용1-4</li>
+      <li>내용1-5</li>
+      <li>내용1-6</li>
+    </ol>
+    <ol>
+      <li>내용2-1</li>
+      <li>내용2-2</li>
+      <li>내용2-3</li>
+    </ol>
+    <ol>
+      <li>추가된 내용</li>
+    </ol>
+  </div>
+  <script>
+    //first-of-type, last-of-type
+    //first-child, last-child
+    $('ol li:first-of-type').text('type:첫번쨰') //li 태그의 첫번째 값
+    $('ol :first-child').text('child:첫번쨰')  //li 태그의 첫번째 자식
+
+    // nth-of-type : 해당하는 자식 태그중에서 순서
+    // nth-child : 모든 자식 태그중에서 순서    
+    $('ol li:nth-child(1)').text('nth-child:첫번쨰') 
+    $('li:nth-of-type(3n)').css('border','2px solid green')
+
+    // only-child
+    $('ol li:only-child').text('자식요소')
+
+    
+  </script>
+</body>
+
+</html>

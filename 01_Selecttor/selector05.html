@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>선택자 05</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <form action="">
+    <p id="zone1">
+      <select name="course" id="course">
+        <option value="opt1">옵션1</option>
+        <option value="opt2" selected>옵션2</option>
+        <option value="opt3">옵션3</option>
+      </select>
+    </p>
+    <p id="zone2">
+      <input type="checkbox" name="hobby" value="book">독서
+      <input type="checkbox" name="hobby" value="bike" checked>자전거
+      <input type="checkbox" name="hobby" value="hiking" checked>등산
+    </p>
+    <p id="zone3">
+      <input type="radio" name="gender" value="male"> 남성
+      <input type="radio" name="gender" value="female" checked> 여성
+    </p>
+  </form>
+  <script>
+    // :checked checked속성이 true인 태그를 검색
+    // 1) input 태그의 type 속성이 checkbox
+    let hobbies = $('#zone2 input[type="checkbox"]')
+
+    // 2) input 태그의 type 속성이 radio
+    hobbies.on('change', e => {
+      let asd = $('#zone2 input[type="checkbox"]:checked')
+    })
+    // 3) select 태그의 option 태그
+    let opt = $('#course :checked')
+
+    // 3) select 태그의 값
+    let selected = $('select').val();
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p>제목</p>
+    <input type="text" name="title" value="제이쿼리">
+  </div>
+  <script>
+    //p태그가 가지고 있는 값
+    let pVal = $('#app p').text();
+    console.log(pVal)
+    //input태그의 값을 변경
+    $('input[name="title"]').val("hello, jquery");
+
+    // document.querySelector('input[name="title"]').addEventListener('input',e=>{
+    //   console.log(e.currentTarget.value,"값이 번경됨") 
+    // })
+
+    $('input[name="title"]').on('input',e=>{
+      console.log(e.currentTarget.value,"값이 번경됨") //jQuery는 자바 스크립트의 거의 모든 기능을 대처하지만 이벤트는 대처 불가
+    })
+  </script>
+</body>
+</html>

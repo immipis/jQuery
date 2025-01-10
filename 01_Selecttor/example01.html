@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제 01</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <div id="date">
+    <div>
+      <input type="text" id="txDx" value="2024-12-25">
+    </div>
+    <div>
+      <p name="holiday">크리스마스 이브</p>
+      <input type="text" size="3">년
+      <input type="text" size="3" class="date">월
+      <input type="text" size="3">일
+      <button type="button">클릭</button>
+    </div>
+    <div>
+      <div>
+        <label>
+          <p class="title">여기에 출력</p>
+          <input type="text" placeholder="yyyy/mm/dd">
+        </label>
+      </div>
+    </div>
+  </div>
+  <script>
+    // val() : value 속성 => val('새로운 값'), val()
+    // text() : text 속성 => text('새로운 값'), text()
+
+    // 1) 2024-12-25 => 3개의 인풋에 쪼개기
+
+    // $('.date').prev().val($("#txDx").val().split('-')[0])
+    // $('.date').val($("#txDx").val().split('-')[1])
+    // $('.date').next().val($("#txDx").val().split('-')[2])
+
+    for (let i = 0; i < $("#txDx").val().split('-').length; i++) {
+      $('input[size=3]')[i].value=$("#txDx").val().split('-')[i]
+    }
+    
+    // 2) 
+    $('button').on('click',e=>{
+      $('.title').text($('p[name=holiday]').text() +' // Hello World')
+      //3)
+      $('label input').val(`${$("#txDx").val().split('-')[0]}/${$("#txDx").val().split('-')[1]}/${$("#txDx").val().split('-')[2]-1}`)
+    })
+  </script>
+</body>
+</html>

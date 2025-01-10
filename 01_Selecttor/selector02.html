@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>선택자 02</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="inner_wrap">
+      <h1>제목1</h1>
+      <h2>제목2</h2>
+      <h3>제목3</h3>
+      <div>
+        <h1>하위 요소1</h1>
+        <h2>하위 요소2</h2>
+      </div>
+    </div>
+  </div>
+  <script>
+    //부모 선택자
+    $('#inner_wrap').parent().css('border', '1px solid black');
+
+    //조성 중 특정 태그 검색 : closest
+    $('#inner_wrap').closest('body').css('background-color', 'yellow')
+
+    //하위 요소 선택자 : 공백
+    $('#wrap *').css('border', '1px dotted blue');
+    $('#wrap h1').css('color', 'skyblue')
+
+    //자식 요소 선택자
+    $('#inner_wrap > h2').text('자식요소로 선택')
+    let childs = $('#inner_wrap').children()
+    console.log(childs)
+
+    //형제 요소 선택자
+
+  </script>
+  <hr>
+  <div id="content"> 
+    <h1>인접관계 선택자</h1>
+    <p>내용1</p>
+    <p class="txt">내용2</p>
+    <p>내용3</p>
+    <p>내용4</p>
+    <span>추가한 내용</span>
+  </div>
+  <script>
+    //이전(형) 요소 선택자
+    $('.txt').prev().css('border','1px solid green')
+    $('.txt').prevAll().text('이전 요소들 전체')
+
+    //이후(동생) 요소 선택자
+    $('.txt').next().next().css('color','red')
+    $('.txt').nextAll().text('이후 요소 전체')
+
+    //다음 요소중 조건을 만족
+    $('.txt + p').text('선택')
+
+    //자기를 제외한 모든 형제 요소 선택자
+    $('#content h1').siblings().css('background-color', 'red')
+    </script>
+</body>
+</html>
