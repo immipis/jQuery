@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>객체 01</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+    .aqua {
+      background-color: aqua;
+      border: 2px dotted wheat;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .green {
+      background-color: green;
+    }
+
+    .yellow {
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="ex01">
+    <h1>
+      <strong>객체 조작 및 생성</strong>
+    </h1>
+    <section id="sec_1">
+      <h2>
+        <em>html()</em>
+      </h2>
+      <p>내용 1</p>
+    </section>
+    <section id="sec_2">
+      <h2>
+        <em>text()</em>
+      </h2>
+      <p>내용 2</p>
+    </section>
+  </div>
+  <script>
+    // val() : 입력태그의 value 속성
+
+    // html() : 태그의 모든 하위요소를 가져와서 문자열로 반환 -> innerHTML
+    let html = $('#sec_1').html();
+    console.log(html)
+    $('#sec_1').html('<a href ="#">text1</a>');
+
+    // text() : 태그의 모든 텍스트를 반환 -> innerText,textContent 
+    let text = $('#sec_2').text();
+    console.log(text)
+    $('#sec_2').text('<a href ="#">text2</a>');
+
+    // css() : style 속성 
+    $('#sec_1').css('background-color', 'orange').css('border', '1px solid yellow')
+
+    $('#sec_2').css({
+      'background-color': 'aqua',
+      'border': '2px dotted wheat',
+    })
+
+    let css = $('#sec_2').css(['background-color','border'])
+    console.log(css)
+    
+    css = $('#sec_2').css('border')
+    console.log(css)
+  </script>
+  <hr>
+  <div id="ex02">
+    <p id="p1">내용 1</p>
+    <p id="p2">내용 2</p>
+    <p id="p3">내용 3</p>
+    <p id="p4" class="green">내용 4</p>
+    <p id="p5" class="yellow">내용 5</p>
+    <p id="p6"></p>
+  </div>
+  <script>
+    // 자바 스크립트
+    document.getElementById('p1').classList;
+
+    // class 속성 : 개별 식별자 없이 순수하게 본소의 값을 가짐
+    // addClass() : 기존 calss 속성에 값을 추가 => classList.add()
+    $('#p1').addClass('aqua');
+
+    // removeClass() : 기존 calss 속성에 값을 삭제 => classList.remove();
+    $('#p1').removeClass('aqua');
+
+    // toggleClass() : 기존 class 속성에 해당 값이 존재하면 삭제 없으면 추가 => classList.toggel();
+    $('#p4').toggleClass('green')
+    $('#p4').toggleClass('green')
+
+    // hasClass() : 기존 class 속성에 해당하는 값이 있는지 확인(boolean) => classList.contains();
+    console.log($('#p4').hasClass('green'))
+  </script>
+  <hr>
+  <div id="ex03">
+    <h1>
+      <strong>객체 조작 및 생성</strong>
+    </h1>
+    <section id="sec01">
+      <h2>
+        <img src="clover.PNG" alt="이미지" style="border: 2px solid black;">
+      </h2>
+    </section>
+    <a id="get_comment" href="#comments" xtw="test">코멘트</a>
+  </div>
+  <script>
+    console.clear()
+    //attr() -> html의 attribute를 조작 정적 최초화면 최초 값
+    //html을 로딩하는 순간 각 태그가 가지고 있는 속성에 접근
+    let varAttr = $('#sec01 img').attr('src');
+    console.log(varAttr)
+    varAttr =$('#get_comment').attr('href');
+    console.log(varAttr)
+
+    //prop() -> Dom의 property 조작 동적 현재화면 현재 값
+    // 해당 페이지가 종료 되기 전까지 변경되는 속성의 실제 값
+    let varProp = $('#sec01 img').prop('src');
+    console.log(varProp)
+    varAttr = $('#get_comment').prop('href');
+    console.log(varProp)
+    $('#get_comment').prop('href','http://www.naver.com');
+  </script>
+</body>
+
+</html>

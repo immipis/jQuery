@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+    .active{
+      background-color: skyblue;
+    }
+    .on{
+      border: 2px solid salmon;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap_1">
+    <p>텍스트1</p>
+    <p class="active">내용2</p>
+    <p><a href="#">네이버</a></p>
+    <p><input type="text" value="Hello"></p>
+  </div>
+  <div class="wrap_2">
+    <p>내용5</p>
+    <p>내용6</p>
+  </div>
+  <div class="wrap_3">
+    <div>
+      <p>내용7</p>
+      <p>내용8</p>
+    </div>
+  </div>
+  <script>
+    $('.wrap_1 p:nth-of-type(1)').text('내용1')
+    $('.active').prop('class','on')
+    $('.wrap_1 a').prop('href','http://www.naver.com')
+    $('.wrap_1 input[type="text"]').val('Korea')//(':text')
+    
+    $('.wrap_2 p:eq(0)').after('<p>After(추가1)</p>')
+    $('.wrap_2 p:eq(0)').before('<p>Before(추가2)</p>')
+
+    $('.wrap_3 p:eq(0)').html('<strong>내용7</strong>');
+    $('.wrap_3 p:eq(1)').html('<strong>내용8</strong>');
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제 01</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <script>
+    let arr1 = [
+      { 'area': '서울', 'dept': '영업', 'name': '무대리' },
+      { 'area': '부산', 'dept': '영업', 'name': '홍과장' },
+      { 'area': '데잔', 'dept': '생산', 'name': '박사장' },
+      { 'area': '서울', 'dept': '생산', 'name': '김부장' },
+    ];
+  </script>
+  <div id="list">
+    <ul>
+      <!-- 서울사람-->
+    </ul>
+    <ul>
+      <!-- 생산사람-->
+    </ul>
+  </div>
+  <script>
+
+    let a = $.map(arr1, (val, index) => {
+        return val.area == '서울' ? val.name : null;
+    })
+    let b = $.grep(arr1, (val, index) => {
+        return val.dept == '생산'
+    })
+
+    $(a).each((e,v)=>{
+      $('#list ul:eq(0)').append(`<li>${v}</li>`)
+    })
+
+    $(b).each(function(e,v){
+      $('#list ul:eq(1)').append(`<li>${v.name}</li>`)
+    })
+
+  </script>
+</body>
+
+</html>

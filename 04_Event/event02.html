@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트 02</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <p>
+    <img src="http://place-hold.it/300X300" class="img1">
+  </p>
+  <script>
+    // 자바 스크립트
+    // DOMContentLoaded => html문서가 로딩이
+    document.addEventListener('DOMContentLoaded',e=>{
+      let img1 = document.getElementsByClassName('img1')[0];
+      let height1 = img1.height;
+      console.log('DOMContentLoaded',height1)
+    }) // 돔을 완성 막덮기
+
+    // load -> 외부에 연동된 코드(iframge, img, video,embed)의 로딩이 완료된 후에 동작
+    window.onload = e=>{
+      let img1 = document.getElementsByClassName('img1')[0];
+      let height1 = img1.height;
+      console.log('onlode',height1)
+    } // 페이지 완성 막해제
+  </script>
+  <script>
+    // 제이쿼리
+    // DOMContentLoaded : ready
+    $(function(){
+      let h1  = $('.img1').height();
+      console.log('reday', h1)
+    })
+
+    // load
+
+    $(window).on('load',function(){
+      let h2 = $('.img1').height();
+      console.log('load , ',h2)
+    })
+  </script>
+</body>
+</html>

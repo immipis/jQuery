@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>array</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="ex01">
+    <h1>배열 메서드</h1>
+    <ul id="menu1">
+      <li>내용 1-1</li>
+      <li>내용 1-2</li>
+      <li>내용 1-3</li>
+    </ul>
+    <ul id="menu2">
+      <li>내용 2-1</li>
+      <li>내용 2-2</li>
+      <li>내용 2-3</li>
+    </ul>
+  </div>
+  <script>
+    // 자바 스크립트 forEach(function(value,index,array){}) => each
+    // 제이쿼리 each(function(index, value){}) 배열에 대한 순환
+    $('li').each(function (index, value) {
+      //value = <li/>
+      console.log(index, value);
+      // 제이쿼리객체에 인덱스를 사용하거나 반복문을 쓰는 경우
+      // 더이상 제이쿼리 객체가 아니라 자바스크립트의 일반 태그로 처리
+      value.textContent += ' 100';
+      $(value).text($(value).text() + ' 100');
+    });
+    let obj = {
+      a: 'aa',
+      b: 'bb',
+      c: 'cc',
+      d: 'dd'
+    }
+
+    $(Object.keys(obj)).each((i, v) => {
+      console.log(i, v, obj[v])
+    })
+
+    $.each(Object.keys(obj), (i, v) => {
+      $('#menu1').append(`<li>${obj[v]}</li>`)
+    })
+  </script>
+  <script>
+    let arr1 = [
+      { 'area': '서울', 'dept': '영업', 'name': '무대리' },
+      { 'area': '부산', 'dept': '영업', 'name': '홍과장' },
+      { 'area': '데잔', 'dept': '생산', 'name': '박사장' },
+      { 'area': '서울', 'dept': '생산', 'name': '김부장' },
+    ];
+    //$map() : 원본 상관없이 return 값만 가지고 새로운 배열 데이터가 달라지기에 연결을 끊는다
+    let mapAry = $.map(arr1, function (val, index) {
+      if (val.area == '서울') {
+        return val.name;
+      }
+    })
+    console.log(arr1, mapAry)
+
+    //$grep() : 원본(데이터 타입)을 유지하며 return 값이 true인 경우만 새로운 배열로 원본 배열과 연결 되 있음 수정시 같이 바뀜(참조 타입일떄)
+    let grepAry = $.grep(arr1, function (val, index) {
+      return val.dept == '영업';
+    })
+    console.log(arr1, grepAry)
+
+  </script>
+</body>
+
+</html>
