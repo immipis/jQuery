@@ -39,6 +39,15 @@
       e.preventDefault()
       e.stopPropagation()
     })
+
+    $('p').on('click',e=>{
+      console.log(e.target , e.currentTarget)
+      if(e.target == e.currentTarget){
+        // 자기자신 이벤트를 발생한 경우에만 동작
+
+        $(e.currentTarget).css('background-color','red')
+      }
+    });
   </script>
 </body>
 
