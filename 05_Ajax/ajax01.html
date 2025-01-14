@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아작스 01</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <script>
+    // $.ajax('https://reqres.in/api/users?page=2')
+    // .done(result=>{
+    //   console.log(result)
+    // })
+    // .fail(err => console.log(err))
+  </script>
+  <scrdpt>
+    <!-- $.ajax(url,{
+      type:'', //method : GET,POST,PUT,DELETE
+      date:{}, // Request 객체의 body, 서버에 전달할 데이터
+      contentType:'', // Headers의 content-Type
+      beforeSend : funcsion(XMLhttpRequset){}
+      전송 직전에 추가 작업 등록
+    })
+      .done(funcion(result){
+      //서버에 전송 성공 했을 경우})
+      /fail(function(result){ 
+      //서버에 전송 싫패 했을 경우
+      )} -->
+
+  </scrdpt>
+  <div>
+    <button type="button" id="allUserBtn">전체조회</button>
+    <button type="button" id="oneUserBtn">단건</button>
+    <button type="button" id="userInsertBtn">등록</button>
+    <button type="button" id="userUpdateBtn">수정</button>
+    <button type="button" id="userDeleteBtn">삭제</button>
+  </div>
+  <script>
+    $(function () {
+      $('button').on('click', function (event) {
+        let btn = event.target;
+        if (btn.id == 'allUserBtn') userAllList()
+        else if (btn.id == 'oneUserBtn') userInfo()
+        else if (btn.id == 'userInsertBtn') userInsert()
+        else if (btn.id == 'userUpdateBtn') userUpdate()
+        else if (btn.id == 'userDeleteBtn') userDelete()
+      })
+    })
+
+    function userAllList() {
+      // 전체조회 GET . https://reqres.in/api/users
+      $.ajax('https://reqres.in/api/users')
+        .done(result => {
+          console.log(result)
+        })
+        .fail(err => console.log(err))
+    }
+    function userInfo() {
+      let uid = 12;
+      $.ajax(`https://reqres.in/api/users/${uid}`)
+        .done(result => {
+          console.log(result)
+        })
+        .fail(err => console.log(err))
+    }
+    function userInsert() {
+      let newUsers = {
+        "name": "Josungmin",
+        "job": "None",
+      }
+      $.ajax('https://reqres.in/api/users', {
+        type: 'post',
+        contentType: "application/json",
+        data: JSON.stringify(newUsers),
+
+      }).done(result => {
+        console.log(result)
+      })
+        .fail(err => console.log(err))
+    }
+
+    function userUpdate() {
+      let newUsers = {
+        "id": 12,
+        "name": "Josungmin",
+        "job": "None",
+      }
+      $.ajax(`https://reqres.in/api/users/${newUsers.id}`, {
+        type: 'PUT',
+        contentType: "application/json",
+        data: JSON.stringify(newUsers),
+      }).done(result => {
+        console.log(result)
+      })
+        .fail(err => console.log(err))
+    }
+    function userDelete() {
+      let uid = 12;
+      $.ajax(`https://reqres.in/api/users/${uid}`, {
+        type: 'DELETE'
+      }).done((result, statusm, xhr) => {
+        console.log(result, statusm, xhr)
+      })
+        .fail(err => console.log(err))
+    }
+  </script>
+</body>
+
+</html>
