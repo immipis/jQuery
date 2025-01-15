@@ -3,17 +3,18 @@ init();
 
 function init() {
   // 각 태그의 이벤트 처리
+  $('#searchBtn').on('click', searUser)
   $('#initBtn').on('click', initForm)
   $('#insertBtn').on('click', insertUser)
   $('#updateBtn').on('click', updateUser)
   $('#delBtn').on('click', delUser)
+
 
   // 데이터 초기화
   getUserList();
 }
 
 function getUserList() {
-  $('#list tbody').empty()
   // 서버가 가지고 있는 회원 데이터 전체 조회
   $.ajax('http://192.168.0.11:8099/userList')
     .done(result => {
@@ -23,7 +24,7 @@ function getUserList() {
 }
 
 function addTbody(list) {
-
+  $('#list tbody').empty()
   $.each(list, (i, v) => {
     if (v.id != null) {
       let trTag = $('<tr/>')
@@ -129,8 +130,8 @@ function updateUser() {
 }
 
 function delUser() {
-  let a = $(`#info input[name='no']`)[0].value
-  let b = $(`#info input[name='id']`)[0].value
+  let a = $(`#info input[name='no']`).val()
+  let b = $(`#info input[name='id']`).val()
   if (a == '') {
     alert('삭제 할 수 없습니다')
     initForm()
@@ -140,6 +141,16 @@ function delUser() {
     .done(result => {
       initForm()
       getUserList();
+    })
+    .fail(err => console.log(err))
+}
+
+function searUser(event){
+  let sval = $('#search').val()
+  let stext = $('input[name=keyword]').val()
+  $.ajax(`http://192.168.0.11:8099/userList?${sval}=${stext}`)
+    .done(result => {
+      addTbody(result)
     })
     .fail(err => console.log(err))
 }
