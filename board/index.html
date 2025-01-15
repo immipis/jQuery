@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        /* Create three unequal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+            height: 300px;
+            /* Should be removed. Only for demonstration */
+        }
+
+        .left,
+        .right {
+            width: 25%;
+        }
+
+        .middle {
+            width: 50%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <!-- 게시판 -->
+        <div class="column">
+            <div>
+                <label for="search">검색조건</label>
+                <select id="search">
+                    <option value="boardTitle" selected>제목</option>
+                    <option value="boardWriter" >작성자</option>
+                    <option value="boardContent" >내용</option>
+                </select>
+                <input type="text" name="keyword">
+                <button type="button" id="resetBtn">취소</button>
+                <button type="button" id="searchBtn">검색</button>
+            </div>
+            <div class="layout">
+                <table id="empList">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="column"></div>
+        <!-- 게시글 -->
+        <div class="column">
+            <div>
+                <h3>게시글 정보</h3>
+            </div>
+            <table id="info">
+                <tr>
+                    <th>번호</th>
+                    <td><input type="text" name="boardNo" readonly></td>
+                </tr>
+                <tr>
+                    <th>제목</th>
+                    <td><input type="text" name="boardTitle"></td>
+                </tr>
+                <tr>
+                    <th>작성자</th>
+                    <td><input type="email" name="boardWriter"></td>
+                </tr>               
+                <tr>
+                    <th>내용</th>
+                    <td><input type="text" name="boardContent"></td>
+                </tr>
+                <tr>
+                    <th>작성일</th>
+                    <td><input type="date" name="boardRegdate"></td>
+                </tr>                
+            </table>
+            <div class="btns">
+                <button type="button" id="initBtn">초기화</button>
+                <button type="button" id="saveBtn">저장</button>
+                <button type="button" id="delBtn">삭제</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/handler.js"></script>
+</body>
+
+</html>
